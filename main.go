@@ -46,7 +46,7 @@ func main() {
 	}(endpointController, endpointEvents, conf)
 
 	// Feed endpoints updates to the cache
-	endpointsCache := &cache.EndpointsCache{}
+	endpointsCache := &cache.Endpoints{}
 	go endpointsCache.Update(endpointEvents)
 
 	// Serve up an http endpoint to access the endpoint cache

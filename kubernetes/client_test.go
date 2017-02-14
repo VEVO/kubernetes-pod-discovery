@@ -7,7 +7,7 @@ import (
 
 type FakeKubernetesClientConfig struct{}
 
-func NewFakeClient() KubernetesClient {
+func NewFakeClient() Client {
 	return &FakeKubernetesClientConfig{}
 }
 

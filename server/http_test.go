@@ -7,6 +7,6 @@ import (
 )
 
 func TestRun(t *testing.T) {
-	endpointsCache := &cache.EndpointsCache{}
+	endpointsCache := &cache.Endpoints{}
 	go Run(8080, endpointsCache)
 }

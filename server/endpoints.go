@@ -1,3 +1,4 @@
+// Package server serves up the endpoints cache via http
 package server
 
 import (
@@ -10,25 +11,25 @@ import (
 	"github.com/VEVO/kubernetes-pod-discovery/cache"
 )
 
-// Our interface that specifies the endpoint routes available for our http server
+// Endpoints interface that specifies the endpoint routes available for our http server
 type Endpoints interface {
 	Root(http.ResponseWriter, *http.Request)
 	LastUpdated(http.ResponseWriter, *http.Request)
 }
 
-// Object that we use to store access to the cache through our endpoints routes
+// EndpointsServer is the object that we use to store access to the cache through our endpoints routes
 type EndpointsServer struct {
-	cache *cache.EndpointsCache
+	cache *cache.Endpoints
 }
 
-// Create a new endpoints server and point to the specified cache
-func NewEndpointsServer(endpointsCache *cache.EndpointsCache) Endpoints {
+// NewEndpointsServer creates a new endpoints server and points to the specified cache
+func NewEndpointsServer(endpointsCache *cache.Endpoints) Endpoints {
 	return &EndpointsServer{
 		cache: endpointsCache,
 	}
 }
 
-// Serve our root endpoints route
+// Root serves our root endpoints route
 func (e *EndpointsServer) Root(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	endpoints, err := json.Marshal(*e.cache.GetEndpoints())
@@ -38,7 +39,7 @@ func (e *EndpointsServer) Root(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, string(endpoints))
 }
 
-// Serve our last_updated endpoints route
+// LastUpdated serves our last_updated endpoints route
 func (e *EndpointsServer) LastUpdated(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	lastUpdated := *e.cache.GetLastUpdated()

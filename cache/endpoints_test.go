@@ -8,7 +8,7 @@ import (
 )
 
 func TestEndpoints_GetEndpoints(t *testing.T) {
-	endpointsCache := EndpointsCache{}
+	endpointsCache := Endpoints{}
 
 	if len(endpointsCache.GetEndpoints().Subsets) != 0 {
 		t.Error("Failed to get empty endpoints")
@@ -16,7 +16,7 @@ func TestEndpoints_GetEndpoints(t *testing.T) {
 }
 
 func TestEndpoints_SetEndpoints(t *testing.T) {
-	endpointsCache := EndpointsCache{}
+	endpointsCache := Endpoints{}
 	fakeEndpoints := &fake.Endpoints
 	endpointsCache.SetEndpoints(fakeEndpoints)
 
@@ -26,7 +26,7 @@ func TestEndpoints_SetEndpoints(t *testing.T) {
 }
 
 func TestEndpoints_Update(t *testing.T) {
-	endpointsCache := EndpointsCache{}
+	endpointsCache := Endpoints{}
 	fakeEndpoints := &fake.Endpoints
 	endpointEvents := make(chan *v1.Endpoints)
 
