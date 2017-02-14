@@ -12,7 +12,7 @@ import (
 
 func TestEndpointsServer_Root(t *testing.T) {
 	endpoints := &fake.Endpoints
-	endpointsCache := &cache.EndpointsCache{}
+	endpointsCache := &cache.Endpoints{}
 	endpointsCache.SetEndpoints(endpoints)
 	endpointsServer := NewEndpointsServer(endpointsCache)
 

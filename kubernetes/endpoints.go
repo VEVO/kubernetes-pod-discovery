@@ -1,3 +1,4 @@
+// Package kubernetes provides access to the Kubernetes API
 package kubernetes
 
 import (
@@ -6,18 +7,19 @@ import (
 	"k8s.io/client-go/pkg/api/v1"
 )
 
+// EndpointsController provides access to the kubernetes endpoints functions
 type EndpointsController struct {
-	client KubernetesClient
+	client Client
 }
 
-// Object that stores our real or mocked kubernetes client object
-func NewEndpointsController(client KubernetesClient) *EndpointsController {
+// NewEndpointsController stores our real or mocked kubernetes client object
+func NewEndpointsController(client Client) *EndpointsController {
 	return &EndpointsController{
 		client: client,
 	}
 }
 
-// Wrapper function around the kubernetes client. If there is any manipulation or filtering
+// GetEndpoints is a wrapper function around the kubernetes client. If there is any manipulation or filtering
 // of the kubernetes types or data, it should be done here.
 func (e EndpointsController) GetEndpoints(service string, namespace string) (*v1.Endpoints, error) {
 	endpoints, err := e.client.GetEndpoints(service, namespace)
