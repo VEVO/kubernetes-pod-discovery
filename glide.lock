@@ -1,5 +1,5 @@
-hash: 689bfc7c2d087d6622b2efcb75b11b95c4e52c62d5133878b66661af30ffde93
-updated: 2017-02-15T09:13:49.78953932-08:00
+hash: 7dc4985d48a5470b7216eb73083e0d58d0c51c5a2ab4c0814d6360fdb5ef3a0a
+updated: 2017-02-15T09:48:26.968593647-08:00
 imports:
 - name: cloud.google.com/go
   version: 3b1ae45394a234c385be014e9a488f2bb6eef821
@@ -30,7 +30,7 @@ imports:
   - digest
   - reference
 - name: github.com/emicklei/go-restful
-  version: 89ef8af493ab468a45a42bb0d89a06fccdd2fb22
+  version: 09691a3b6378b740595c1002f40c34dd5f218a22
   subpackages:
   - log
   - swagger
