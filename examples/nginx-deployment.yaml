@@ -1,0 +1,44 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx
+	namespace: default
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+      - name: kubernetes-pod-discovery
+        image: vevo/kubernetes-pod-discovery:latest
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+				args:
+				- "--service nginx --namespace default"
+        volumeMounts:
+        -   mountPath: /etc/ssl/certs/ca-certificates.crt
+            name: ssl-certs
+            readOnly: true
+      volumes:
+      -   hostPath:
+              path: /etc/ssl/certs/ca-certificates.crt
+          name: ssl-certs
