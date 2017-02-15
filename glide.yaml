@@ -6,3 +6,16 @@ import:
   - pkg/api/v1
   - pkg/apis/meta/v1
   - rest
+- package: golang.org/x/text
+  version: 2910a502d2bf9e43193af9d68ca516529614eed3
+  subpackages:
+  - cases
+  - internal/tag
+  - language
+  - runes
+  - secure/bidirule
+  - secure/precis
+  - transform
+  - unicode/bidi
+  - unicode/norm
+  - width
