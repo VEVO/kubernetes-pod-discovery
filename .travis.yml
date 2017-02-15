@@ -1,9 +1,9 @@
 language: go
 sudo: false
 go: 1.7.4
-install: ./bin/get-deps.sh
+install: godep restore -v ./...
 script:
-  - ./bin/run-test-suite.sh
+  - go test -v ./...
 after_success:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
 go_import_path: github.com/VEVO/kubernetes-pod-discovery
