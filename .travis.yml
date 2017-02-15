@@ -1,12 +1,9 @@
 language: go
 sudo: false
 go: 1.7.4
-before_install:
-  - go get github.com/mitchellh/gox
-  - go get -v github.com/Masterminds/glide
-  - cd $GOPATH/src/github.com/Masterminds/glide && git checkout tags/v0.12.3 && go install && cd -
-  - glide install
-script: go test -v ./...
-go_import_path: github.com/VEVO/kubernetes-pod-discovery
+install: ./bin/get-deps.sh
+script:
+  - ./bin/run-test-suite.sh
 after_success:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+go_import_path: github.com/VEVO/kubernetes-pod-discovery
