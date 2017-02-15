@@ -3,7 +3,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: nginx
-	namespace: default
+  namespace: default
 spec:
   replicas: 3
   template:
@@ -32,8 +32,8 @@ spec:
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 1
-				args:
-				- "--service nginx --namespace default"
+        args:
+        - "--service nginx --namespace default"
         volumeMounts:
         -   mountPath: /etc/ssl/certs/ca-certificates.crt
             name: ssl-certs
