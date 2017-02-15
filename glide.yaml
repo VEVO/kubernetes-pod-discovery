@@ -19,3 +19,19 @@ import:
   - unicode/bidi
   - unicode/norm
   - width
+- package: golang.org/x/net
+  version: e90d6d0afc4c315a0d87a568ae68577cc15149a0
+  subpackages:
+  - context
+  - context/ctxhttp
+  - http2
+  - http2/hpack
+  - idna
+  - lex/httplex
+- package: github.com/gogo/protobuf
+  version: e18d7aa8f8c624c915db340349aad4c49b10d173
+- package: github.com/emicklei/go-restful
+  version: 09691a3b6378b740595c1002f40c34dd5f218a22
+  subpackages:
+  - log
+  - swagger
