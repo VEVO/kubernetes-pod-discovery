@@ -4,3 +4,16 @@ This service can be used to cache the endpoints associated with a Kubernetes ser
 
 Run this as a sidecar container and access it from your service via http://localhost:8080/endpoints or use it as an example to communicate
 directly with the Kubernetes API from inside your process.
+
+## Building
+
+`make build`
+
+## Running
+
+This service is designed to be run inside a Kubernetes Pod as a sidecar container. To run the example nginx service, apply the the following
+configurations:
+
+`kubectl apply -f examples/*.yaml`
+
+This will create an nginx deployment and service which has type `LoadBalancer` so it will be excessible from the internet.
