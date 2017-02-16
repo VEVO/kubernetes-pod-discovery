@@ -9,6 +9,15 @@ install:
 script:
   - go test -v ./...
 after_success:
-  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
-  - ghr --username tcnksm-sample --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
+  - gox -osarch="linux/amd64" -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: Co0COecCP7AuVRgTS8ZOjSePjoHkWUoNJAkid4TJ2A7UqG1XWAdzwjS2ltcxADRNn3CxN0LT1szmGEzaHXS/NTl0G46ITIEAAyEF+vH72KYDgvoJPaTGUjOPbfnx99uEQ9LOsm7hV4kDUumoKblYOsZcND9cLEVpE6SKy5AoKqRo9Vqn80g2WDy26nM3oPPNgfkVwP7nEy66NUpTMg/7pUSr1N0m6O8SIetl3BD07T0uHr4toSWlh+U5+2ou4VE13FEce7ScIolxuy00XHLK59q9IvLuU0f1h8UVpvnIIzBNZ42cxpWANkLO4okmP1vxBfWZ4AuIV0UixLA1DVR/0onrUr3BSqKTph9T1sKgnVmhywRIApFu8gl6KJl4G9Do7e6ao5S4KMXCMY28RotltMIXU/tZtLPz0oSh/sQkG6RI59SS9smJl1K7wzmlR4h1WA7qnQ/08ShOq84cEFkmrr2j5PFG9jjoExLqJRqQDfXasv+1ViNJJytmVKdQfiT0N/WA7H/j3/JcqCM99NwCJKDPIWT3/sNXd3Iy5ip3Mu9gdby2vnSBO7z0sDVBRo5bRGi32+b3QLGepdqoUrq+k0kqKZE+2Alxp5os2YtKuqcb6lgJfTvEhD/Aww7zJR4H62fTJ+XhJAdoQ6mdEaEFHJlJ1I8dQRq9vtsxY0nCWBU=
+  file:
+    - dist/linux_amd64_kubernetes-pod-discovery
+  on:
+    repo: VEVO/kubernetes-pod-discovery
+    tags: true
 go_import_path: github.com/VEVO/kubernetes-pod-discovery

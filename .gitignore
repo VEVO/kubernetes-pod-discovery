@@ -1,3 +1,4 @@
 .idea
 kubernetes-pod-discovery.iml
 vendor
+dist
