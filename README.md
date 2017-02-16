@@ -16,4 +16,4 @@ configurations:
 
 `kubectl apply -f examples/*.yaml`
 
-This will create an nginx deployment and service which has type `LoadBalancer` so it will be excessible from the internet.
+This will create an nginx deployment and service which has type `LoadBalancer` so it will be accessible from the internet.
