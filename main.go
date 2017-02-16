@@ -7,19 +7,24 @@ import (
 	"github.com/VEVO/kubernetes-pod-discovery/server"
 	"k8s.io/client-go/pkg/api/v1"
 
-	"flag"
 	"fmt"
 	"os"
+	"strconv"
 	"time"
 )
 
 func main() {
-	conf := &config.Config{}
-	flag.StringVar(&conf.Service, "service", "", "name of the service")
-	flag.StringVar(&conf.Namespace, "namespace", "", "name of the namespace where the service resides")
-	flag.Int64Var(&conf.ListenPort, "listen-port", 8080, "port on which to bind the service")
-	flag.Parse()
-
+	// Initialize the configuration
+	conf := &config.Config{
+		// ListenPort default
+		ListenPort: 8080,
+	}
+	conf.Service = os.Getenv("KUBERNETES_POD_DISCOVERY_SERVICE_NAME")
+	conf.Namespace = os.Getenv("KUBERNETES_POD_DISCOVERY_NAMESPACE")
+	listenPort := os.Getenv("KUBERNETES_POD_DISCOVERY_LISTEN_PORT")
+	if listenPort != "" {
+		conf.ListenPort, _ = strconv.ParseInt(listenPort, 10, 64)
+	}
 	if err := conf.Validate(); err != nil {
 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
 		os.Exit(1)
@@ -38,6 +43,7 @@ func main() {
 		for range ticker.C {
 			endpoints, err := endpointController.GetEndpoints(conf.Service, conf.Namespace)
 			if err != nil {
+				fmt.Println(fmt.Sprintf("Failed to get endpoints: %s", err))
 				time.Sleep(time.Duration(1 * time.Second))
 				continue
 			}

@@ -11,7 +11,9 @@ spec:
   ports:
   - port: 80
     protocol: TCP
+    name: nginx
   - port: 8080
     protocol: TCP
+    name: endpoints
   selector:
     app: nginx

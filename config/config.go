@@ -13,10 +13,10 @@ type Config struct {
 // Validate validates that the required flags are passed to the service
 func (c *Config) Validate() error {
 	if c.Service == "" {
-		return fmt.Errorf("The service flag is required")
+		return fmt.Errorf("The service is required")
 	}
 	if c.Namespace == "" {
-		return fmt.Errorf("The namespace flag is required")
+		return fmt.Errorf("The namespace is required")
 	}
 	return nil
 }

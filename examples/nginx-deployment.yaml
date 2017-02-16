@@ -23,7 +23,7 @@ spec:
           initialDelaySeconds: 30
           timeoutSeconds: 1
       - name: kubernetes-pod-discovery
-        image: vevo/kubernetes-pod-discovery:latest
+        image: vevo/kubernetes-pod-discovery:0.0.2
         ports:
         - containerPort: 8080
         livenessProbe:
@@ -32,8 +32,11 @@ spec:
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 1
-        args:
-        - "--service nginx --namespace default"
+        env:
+          - name: KUBERNETES_POD_DISCOVERY_SERVICE_NAME
+            value: nginx
+          - name: KUBERNETES_POD_DISCOVERY_NAMESPACE
+            value: default
         volumeMounts:
         -   mountPath: /etc/ssl/certs/ca-certificates.crt
             name: ssl-certs

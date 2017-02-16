@@ -13,7 +13,7 @@ var (
 func TestConfig_Validate(t *testing.T) {
 	config := &Config{}
 	if err := config.Validate(); err != nil {
-		if fmt.Sprintf("%s", err) != "The service flag is required" {
+		if fmt.Sprintf("%s", err) != "The service is required" {
 			t.Errorf("Expected error but got %s", err)
 		}
 	} else {
@@ -26,7 +26,7 @@ func TestConfig_Validate2(t *testing.T) {
 		Service: service,
 	}
 	if err := config.Validate(); err != nil {
-		if fmt.Sprintf("%s", err) != "The namespace flag is required" {
+		if fmt.Sprintf("%s", err) != "The namespace is required" {
 			t.Errorf("Expected error but got %s", err)
 		}
 	} else {
