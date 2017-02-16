@@ -2,15 +2,11 @@
 
 This service can be used to cache the endpoints associated with a Kubernetes service. See https://kubernetes.io/docs/user-guide/services/.
 
-Run this as a sidecar container and access it from your service via http://localhost:8080/endpoints or use it as an example to communicate
-directly with the Kubernetes API from inside your process.
+Run this as a sidecar container and access it from your service via http://localhost:8080/endpoints or use it as an example to communicate directly with the Kubernetes API from inside your process.
 
 ## How It Works
 
-This service runs inside the Kubernetes cluster (typically as a sidecar container) and uses the built-in service account token to
-authenticate with the Kubernetes API (https://kubernetes.io/docs/user-guide/accessing-the-cluster/#accessing-the-api-from-a-pod). It caches
-the endpoints for a given service and namespace, which are specified using the environment variables `KUBERNETES_POD_DISCOVERY_SERVICE_NAME`
-and `KUBERNETES_POD_DISCOVERY_NAMESPACE` and presents them to the following endpoint that will be accessible from any containers in the pod:
+This service runs inside the Kubernetes cluster (typically as a sidecar container) and uses the built-in service account token to authenticate with the Kubernetes API (https://kubernetes.io/docs/user-guide/accessing-the-cluster/#accessing-the-api-from-a-pod). It caches the endpoints for a given service and namespace, which are specified using the environment variables `KUBERNETES_POD_DISCOVERY_SERVICE_NAME` and `KUBERNETES_POD_DISCOVERY_NAMESPACE` and presents them to the following endpoint that will be accessible from any containers in the pod:
 
 `http://localhost:8080/endpoints`
 
@@ -48,8 +44,7 @@ The endpoints format is the following:
 }
 ```
 
-So with the above configuration, the addresses for the available pods in the service pool can be found from `subsets.0.addresses.0.ip` where
-0 is the index of the list. The ports can be accessed the same way.
+So with the above configuration, the addresses for the available pods in the service pool can be found from `subsets.0.addresses.0.ip` where 0 is the index of the list. The ports can be accessed the same way.
 
 ## Building
 
@@ -57,8 +52,7 @@ So with the above configuration, the addresses for the available pods in the ser
 
 ## Running
 
-This service is designed to be run inside a Kubernetes Pod as a sidecar container. To run the example nginx service, apply the the following
-configurations:
+This service is designed to be run inside a Kubernetes Pod as a sidecar container. To run the example nginx service, apply the the following configurations:
 
 `kubectl apply -f examples/*.yaml`
 
@@ -66,5 +60,4 @@ This will create an nginx deployment and service which has type `LoadBalancer` s
 
 ## Pre-built Docker Image
 
-You can use the pre-built docker image at https://hub.docker.com/r/vevo/kubernetes-pod-discovery. For example, your sidecar container would
-use image: `vevo/kubernetes-pod-discovery:0.0.2`
+You can use the pre-built docker image at https://hub.docker.com/r/vevo/kubernetes-pod-discovery. For example, your sidecar container would use image: `vevo/kubernetes-pod-discovery:0.0.2`
