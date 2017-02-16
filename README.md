@@ -22,7 +22,7 @@ There is also a health endpoint that can be accessed from the following:
 
 The endpoints format is the following:
 
-```json
+```
 {
   metadata: <kubernetes metadata>...
   },
