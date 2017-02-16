@@ -22,7 +22,7 @@ There is also a health endpoint that can be accessed from the following:
 
 The endpoints format is the following:
 
-json```
+`
 {
   metadata: <kubernetes metadata>...
   },
@@ -46,7 +46,7 @@ json```
   }
   ]
 }
-```
+`
 
 So with the above configuration, the addresses for the available pods in the service pool can be found from `subsets.0.addresses.0.ip` where
 0 is the index of the list. The ports can be accessed the same way.
