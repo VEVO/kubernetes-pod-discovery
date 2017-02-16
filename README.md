@@ -7,7 +7,7 @@ directly with the Kubernetes API from inside your process.
 
 ## Building
 
-`make build`
+`go build .`
 
 ## Running
 
