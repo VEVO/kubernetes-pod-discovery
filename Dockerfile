@@ -1,5 +1,5 @@
 FROM scratch
 
-ADD kubernetes-pod-discovery /kubernetes-pod-discovery
+ADD dist/linux_amd64_kubernetes-pod-discovery /kubernetes-pod-discovery
 
-CMD ["/kubernetes-pod-discovery"]
+ENTRYPOINT ["/kubernetes-pod-discovery"]
