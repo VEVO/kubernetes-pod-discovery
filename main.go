@@ -44,7 +44,6 @@ func main() {
 			endpoints, err := endpointController.GetEndpoints(conf.Service, conf.Namespace)
 			if err != nil {
 				fmt.Println(fmt.Sprintf("Failed to get endpoints: %s", err))
-				time.Sleep(time.Duration(1 * time.Second))
 				continue
 			}
 			endpointEvents <- endpoints
