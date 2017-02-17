@@ -14,6 +14,8 @@ There is also a health endpoint that can be accessed from the following:
 
 `http://localhost:8080/health`
 
+Note that the listen port can be adjusted via the `KUBERNETES_POD_DISCOVERY_LISTEN_PORT` environment variable.
+
 ## Format
 
 The endpoints format is the following:
