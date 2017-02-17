@@ -56,7 +56,7 @@ So with the above configuration, the addresses for the available pods in the ser
 
 This service is designed to be run inside a Kubernetes Pod as a sidecar container. To run the example nginx service, apply the the following configurations:
 
-`kubectl apply -f examples/*.yaml`
+`kubectl apply -R -f examples/`
 
 This will create an nginx deployment and service which has type `LoadBalancer` so it will be accessible from the internet.
 
