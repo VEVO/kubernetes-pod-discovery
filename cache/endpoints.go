@@ -10,29 +10,29 @@ import (
 
 // Endpoints shared object that holds our cache of the endpoints. Requires the use of the RWMutex for locking.
 type Endpoints struct {
-	lock        sync.RWMutex
+	sync.RWMutex
 	items       v1.Endpoints
 	lastUpdated time.Time
 }
 
 // GetEndpoints gets the endpoints out of the cache
 func (e *Endpoints) GetEndpoints() *v1.Endpoints {
-	e.lock.RLock()
-	defer e.lock.RUnlock()
+	e.RLock()
+	defer e.RUnlock()
 	return &e.items
 }
 
 // GetLastUpdated gets the time of the last update to the cache
 func (e *Endpoints) GetLastUpdated() *time.Time {
-	e.lock.RLock()
-	defer e.lock.RUnlock()
+	e.RLock()
+	defer e.RUnlock()
 	return &e.lastUpdated
 }
 
 // SetEndpoints sets the endpoints on the cache
 func (e *Endpoints) SetEndpoints(endpoints *v1.Endpoints) {
-	e.lock.Lock()
-	defer e.lock.Unlock()
+	e.Lock()
+	defer e.Unlock()
 	e.lastUpdated = time.Now()
 	e.items = *endpoints
 }
