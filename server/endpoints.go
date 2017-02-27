@@ -43,7 +43,7 @@ func (e *EndpointsServer) Root(w http.ResponseWriter, r *http.Request) {
 // LastUpdated serves our last_updated endpoints route
 func (e *EndpointsServer) LastUpdated(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	lastUpdated := *e.cache.GetLastUpdated()
+	lastUpdated := e.cache.GetLastUpdated()
 	response := fmt.Sprintf("{\"lastUpdated\": \"%s\"}", lastUpdated.UTC().Format("2006-01-02T15:04:05-0700"))
 	io.WriteString(w, string(response))
 }
