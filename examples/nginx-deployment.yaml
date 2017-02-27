@@ -23,7 +23,7 @@ spec:
           initialDelaySeconds: 30
           timeoutSeconds: 1
       - name: kubernetes-pod-discovery
-        image: vevo/kubernetes-pod-discovery:0.0.2
+        image: vevo/kubernetes-pod-discovery:0.0.3
         ports:
         - containerPort: 8080
         livenessProbe:

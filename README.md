@@ -62,4 +62,4 @@ This will create an nginx deployment and service which has type `LoadBalancer` s
 
 ## Pre-built Docker Image
 
-You can use the pre-built docker image at https://hub.docker.com/r/vevo/kubernetes-pod-discovery. For example, your sidecar container would use image: `vevo/kubernetes-pod-discovery:0.0.2`
+You can use the pre-built docker image at https://hub.docker.com/r/vevo/kubernetes-pod-discovery. For example, your sidecar container would use image: `vevo/kubernetes-pod-discovery:0.0.3`
