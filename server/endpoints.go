@@ -34,7 +34,8 @@ func (e *EndpointsServer) Root(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	endpoints, err := json.Marshal(*e.cache.GetEndpoints())
 	if err != nil {
-		io.WriteString(w, fmt.Sprintf("%s", err))
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 	io.WriteString(w, string(endpoints))
 }

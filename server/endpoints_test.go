@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"fmt"
+
 	"github.com/VEVO/kubernetes-pod-discovery/cache"
 	"github.com/VEVO/kubernetes-pod-discovery/fake"
 )
