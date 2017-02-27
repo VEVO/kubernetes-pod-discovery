@@ -23,10 +23,10 @@ func (e *Endpoints) GetEndpoints() *v1.Endpoints {
 }
 
 // GetLastUpdated gets the time of the last update to the cache
-func (e *Endpoints) GetLastUpdated() *time.Time {
+func (e *Endpoints) GetLastUpdated() time.Time {
 	e.RLock()
 	defer e.RUnlock()
-	return &e.lastUpdated
+	return e.lastUpdated
 }
 
 // SetEndpoints sets the endpoints on the cache
