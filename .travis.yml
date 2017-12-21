@@ -1,6 +1,8 @@
 language: go
 sudo: false
-go: 1.7.4
+go:
+  - 1.x
+  - 1.9.x
 before_install:
   - go get github.com/mitchellh/gox
   - go get github.com/tools/godep
