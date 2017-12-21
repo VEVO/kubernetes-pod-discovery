@@ -33,10 +33,13 @@ func TestEndpointsServer_Root(t *testing.T) {
 			status, http.StatusOK)
 	}
 
-	expected, err := json.Marshal(endpoints)
-	if response.Body.String() != string(expected) {
+	if expected, err := json.Marshal(endpoints); response.Body.String() != string(expected) {
 		t.Errorf("Unexpected response body: got %v want %v",
 			response.Body.String(), expected)
+	} else {
+		if err != nil {
+			t.Errorf("Unexpected json Marshalling error: %s", err)
+		}
 	}
 }
 
