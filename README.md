@@ -1,6 +1,7 @@
 # kubernetes-pod-discovery
 
-[![Build Status](https://travis-ci.org/VEVO/kubernetes-pod-discovery.svg?branch=master)](https://travis-ci.org/VEVO/kubernetes-pod-discovery)
+[![GoDoc](https://godoc.org/github.com/VEVO/kubernetes-pod-discovery/logger?status.svg)](https://godoc.org/github.com/VEVO/kubernetes-pod-discovery)
+[![Test Status](https://github.com/VEVO/kubernetes-pod-discovery/workflows/tests/badge.svg)](https://github.com/VEVO/kubernetes-pod-discovery/actions?query=workflow%3Atests)
 [![Go Report Card](https://goreportcard.com/badge/github.com/VEVO/kubernetes-pod-discovery)](https://goreportcard.com/report/github.com/VEVO/kubernetes-pod-discovery)
 
 This service can be used to cache the endpoints associated with a Kubernetes service. See https://kubernetes.io/docs/user-guide/services/.
